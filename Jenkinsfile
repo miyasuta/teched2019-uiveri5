@@ -4,6 +4,14 @@
 //Setup the skeleton for Jenkins based Runs
 node {
     stage('System Tests') {
-
+        uiVeri5ExecuteTests script: this
+        publishHTML target: [
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'target/report/screenshots/',
+            reportFiles: "report.html",
+            reportName: "UIVeri5 Test Report"
+        ]        
     }
 }
