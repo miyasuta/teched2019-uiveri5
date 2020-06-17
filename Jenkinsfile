@@ -4,7 +4,7 @@
 //Setup the skeleton for Jenkins based Runs
 node {
     stage('System Tests') {
-        uiVeri5ExecuteTests script: this
+        uiVeri5ExecuteTests script: this, testOptions: "conf.js"
         publishHTML target: [
             allowMissing: true,
             alwaysLinkToLastBuild: true,
