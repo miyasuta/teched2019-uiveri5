@@ -3,6 +3,14 @@
 
 //Setup the skeleton for Jenkins based Runs
 node {
+    stage("prepare") {
+        steps {
+            deleteDir()
+            checkout scm
+            setupCommonPipelineEnvironment script: this
+        }
+    }    
+    
     stage('System Tests') {
         uiVeri5ExecuteTests script: this, testOptions: "conf.js"
         publishHTML target: [
